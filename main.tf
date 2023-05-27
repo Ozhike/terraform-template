@@ -61,7 +61,7 @@ resource "aws_instance" "cba_tf_instance" {
   security_groups = [aws_security_group.cba_tf_sg.id]
   key_name        = var.key_name
   user_data       = fileexists("install_apache.sh") ? file("install_apache.sh") : null
-
+  count = 2
 
   tags = {
     "NAME" = "ApacheInstance"
